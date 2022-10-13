@@ -2,10 +2,28 @@
   background-color: rgb(161, 255, 161);
   width: 100%;
   display: flex;
-  padding: 10px;
-  height: 100px;
+  justify-content: space-between;
+  height: 130px;
 
-  h1 {
-    margin-left: 20px;
+  .header-left {
+    display: flex;
+    padding: 10px;
+    h1 {
+      margin-left: 20px;
+    }
   }
+
+  .header-right {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    align-items: center;
+    
+    button {
+      width: 150px;
+      height: 50%;
+      margin: 10px;
+    }
+  }
+
 }
