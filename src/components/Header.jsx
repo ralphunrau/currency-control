@@ -5,7 +5,7 @@ function Header() {
   return (
     <div className='Header'>
       <img src={Logo} alt='logo' />
-      Currency Control
+      <h1>Currency Control</h1>
     </div>
   )
 }
