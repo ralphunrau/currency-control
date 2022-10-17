@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 
 router.post('/login', (req, res) => {
-  res.json({test: 'test', test1: 'test1'})
+  console.log('REQUEST:', req);
+  console.log('RESPONSE:', res);
 });
 
 router.post('/register', (req, res) => {
