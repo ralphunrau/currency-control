@@ -1,17 +1,18 @@
 const express = require('express');
 const router = express.Router();
 
+const { addNewUser } = require('../db/knex');
+
 router.post('/login', (req, res) => {
-  console.log('REQUEST:', req);
-  console.log('RESPONSE:', res);
+  // addNewUser here
 });
 
 router.post('/register', (req, res) => {
-  res.json({test: 'test', test1: 'test1'})
+  // res.json({test: 'test', test1: 'test1'})
 });
 
 router.post('/logout', (req, res) => {
-  res.json({test: 'test', test1: 'test1'})
+  // res.json({test: 'test', test1: 'test1'})
 })
 
 module.exports = router;
