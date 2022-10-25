@@ -3,6 +3,7 @@ import Button from './Button';
 import Logo from '../Logo.png';
 
 function Header() {
+
   return (
     <div className='Header'>
       <section className='header-left'>
