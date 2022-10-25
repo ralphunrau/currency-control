@@ -1,3 +1,30 @@
-.login-form {
-  margin: 20px 15% 0 15%
+.login-page {
+  margin: 20px 15% 0 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .login-form {
+    width: 50%;
+    height: 450px;
+    padding: 5px;
+    background-color: rgb(209, 255, 217);
+
+    .form-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .form-input {
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+
+      input {
+        height: 25px;
+      }
+    }
+  }
 }
