@@ -3,6 +3,7 @@ import Header from './Header';
 import Body from './Body';
 import Footer from './Footer';
 import LoginForm from './LoginForm';
+import SignupForm from './SignupForm';
 import Testing from './Testing';
 import React, { useState } from 'react';
 
@@ -16,6 +17,7 @@ function App() {
       <Header />
       { userForm === 'none' && <Body /> }
       { userForm === 'login' && <LoginForm /> }
+      { userForm === 'signup' && <SignupForm /> }
       <Footer />
     </div>
   );
