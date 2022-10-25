@@ -6,7 +6,7 @@
 
   .login-form {
     width: 50%;
-    height: 450px;
+    height: 253px;
     padding: 5px;
     background-color: rgb(209, 255, 217);
 
@@ -15,6 +15,10 @@
       flex-direction: column;
       align-items: center;
       margin-bottom: 20px;
+
+      text {
+        margin: 10px;
+      }
     }
 
     .form-input {
@@ -25,6 +29,11 @@
       input {
         height: 25px;
       }
+    }
+
+    button {
+      height: 30px;
+      width: 80px;
     }
   }
 }
