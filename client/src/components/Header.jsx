@@ -7,7 +7,7 @@ function Header(props) {
   return (
     <div className='Header'>
       <section className='header-left'>
-        <img src={Logo} alt='logo' />
+        <img src={Logo} alt='logo' onClick={() => props.setUserForm('None')}/>
         <h1>Currency Control</h1>
       </section>
       <section className='header-right'>
