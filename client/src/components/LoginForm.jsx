@@ -1,22 +1,22 @@
 import './styles/LoginForm.scss';
 
-function LoginForm() {
+function LoginForm(props) {
   return (
     <div className='login-page'>
-      <div className='login-form'>
+      <form className='login-form' action='/login' method='get' onSubmit={() => props.setUserForm('None')}>
         <div className='form-header'>
           <text>Log into your Currency Control account!</text>
         </div>
         <div className='form-input'>
           <text>Email</text>
-          <input></input>
+          <input type='email' name='email'></input>
         </div>
         <div className='form-input'>
           <text>Password</text>
-          <input type='password'></input>
+          <input type='password' name='password'></input>
         </div>
-        <button>Submit</button>
-      </div>
+        <input type="submit" />
+      </form>
     </div>
   );
 }

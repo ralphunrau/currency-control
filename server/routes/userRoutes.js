@@ -3,8 +3,14 @@ const router = express.Router();
 
 const { addNewUser } = require('../db/knex');
 
-router.post('/login', (req, res) => {
+router.get('/login', (req, res) => {
+  // check if user exists here
+  console.log('heyyyy')
+})
+
+router.post('/signup', (req, res) => {
   // addNewUser here
+  console.log('heyyyyo')
 });
 
 router.post('/register', (req, res) => {

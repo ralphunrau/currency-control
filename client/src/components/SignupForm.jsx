@@ -1,9 +1,9 @@
 import './styles/SignupForm.scss';
 
-function SignupForm() {
+function SignupForm(props) {
   return (
     <div className='signup-page'>
-      <div className='signup-form'>
+      <form className='signup-form' action='/signup' method='post' onSubmit={() => props.setUserForm('None')} >
         <div className='form-header'>
           <text>Create a Currency Control account.</text>
           <text>Get started on your personal money-saving journey!</text>
@@ -18,18 +18,18 @@ function SignupForm() {
         </div>
         <div className='form-input'>
           <text>Email</text>
-          <input></input>
+          <input type='email' name='email'></input>
         </div>
         <div className='form-input'>
           <text>Password</text>
-          <input type='password'></input>
+          <input type='password' name='password'></input>
         </div>
         <div className='form-input'>
           <text>Confirm Password</text>
           <input type='password'></input>
         </div>
-        <button>Submit</button>
-      </div>
+        <input type="submit" />
+      </form>
     </div>
   );
 }
