@@ -9,14 +9,8 @@ router.get('/login', (req, res) => {
 })
 
 router.post('/signup', (req, res) => {
-  console.log('REQREQREQ', req)
-  console.log('RESRESRESRES', res)
-
-  console.log('heyyyyo');
-});
-
-router.post('/register', (req, res) => {
-  // res.json({test: 'test', test1: 'test1'})
+  console.log('RES:', res.body);
+  console.log('REQ:', req.body);
 });
 
 router.post('/logout', (req, res) => {

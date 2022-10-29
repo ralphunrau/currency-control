@@ -1,61 +1,40 @@
 import './styles/SignupForm.scss';
-import React from 'react';
-import axios from 'axios';
 
 function SignupForm(props) {
 
-  const firstNameRef = React.useRef();
-  const lastNameRef = React.useRef();
-  const emailRef = React.useRef();
-  const passwordRef = React.useRef();
-  const confirmPassRef = React.useRef();
-
   const handleSubmit = (event) => {
     event.preventDefault();
-    const newUser = {
-      firstName: firstNameRef.current.value,
-      lastName: lastNameRef.current.value,
-      email: emailRef.current.value,
-      password: passwordRef.current.value
-    }
-
-    axios.post('http://localhost:8000/user/signup', newUser)
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+    console.log('got to handle submit');
   }
 
   return (
     <div className='signup-page'>
-      <form className='signup-form' action='/signup' method='post' onSubmit={handleSubmit} >
+      <form className='signup-form' action='/user/signup' method='POST'>
         <div className='form-header'>
-          <text>Create a Currency Control account.</text>
-          <text>Get started on your personal money-saving journey!</text>
+          <label>Create a Currency Control account.</label>
+          <label>Get started on your personal money-saving journey!</label>
         </div>
         <div className='form-input'>
-          <text>First Name</text>
-          <input ref={firstNameRef}></input>
+          <label htmlFor='firstName'>First Name</label>
+          <input id='firstName'></input>
         </div>
         <div className='form-input'>
-          <text>Last Name</text>
-          <input ref={lastNameRef}></input>
+          <label htmlFor='lastName'>Last Name</label>
+          <input id='lastName'></input>
         </div>
         <div className='form-input'>
-          <text>Email</text>
-          <input type='email' ref={emailRef}></input>
+          <label htmlFor='email'>Email</label>
+          <input type='email' id='email'></input>
         </div>
         <div className='form-input'>
-          <text>Password</text>
-          <input type='password' ref={passwordRef}></input>
+          <label htmlFor='password'>Password</label>
+          <input type='password' id='password'></input>
         </div>
         <div className='form-input'>
-          <text>Confirm Password</text>
-          <input type='password' ref={confirmPassRef}></input>
+          <label htmlFor='confirmPass'>Confirm Password</label>
+          <input type='password' id='confirmPass'></input>
         </div>
-        <input type="submit" />
+        <input type='submit'/>
       </form>
     </div>
   );
