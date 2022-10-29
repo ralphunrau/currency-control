@@ -1,5 +1,6 @@
 import './styles/SignupForm.scss';
 import React from 'react';
+import axios from 'axios';
 
 function SignupForm(props) {
 
@@ -11,11 +12,20 @@ function SignupForm(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('-', firstNameRef.current.value);
-    console.log('-', lastNameRef.current.value);
-    console.log('-', emailRef.current.value);
-    console.log('-', passwordRef.current.value);
-    console.log('-', confirmPassRef.current.value);
+    const newUser = {
+      firstName: firstNameRef.current.value,
+      lastName: lastNameRef.current.value,
+      email: emailRef.current.value,
+      password: passwordRef.current.value
+    }
+
+    axios.post('http://localhost:8000/user/signup', newUser)
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 
   return (

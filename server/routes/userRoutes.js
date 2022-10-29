@@ -9,8 +9,10 @@ router.get('/login', (req, res) => {
 })
 
 router.post('/signup', (req, res) => {
-  // addNewUser here
-  console.log('heyyyyo')
+  console.log('REQREQREQ', req)
+  console.log('RESRESRESRES', res)
+
+  console.log('heyyyyo');
 });
 
 router.post('/register', (req, res) => {
