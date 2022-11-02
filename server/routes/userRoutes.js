@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const { addNewUser } = require('../db/knex');
+const { checkInputField } = require('../helpers/checkInputField');
 
 router.get('/login', (req, res) => {
   // check if user exists here
@@ -11,7 +12,8 @@ router.get('/login', (req, res) => {
 router.post('/signup', (req, res) => {
   console.log('RES:', res.body);
   console.log('REQ:', req.body);
-  res.send('POST request to the homepage')
+
+  checkInputField(req.body)
 });
 
 router.post('/logout', (req, res) => {
