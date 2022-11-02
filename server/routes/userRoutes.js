@@ -13,7 +13,7 @@ router.post('/signup', (req, res) => {
   console.log('RES:', res.body);
   console.log('REQ:', req.body);
 
-  checkInputField(req.body)
+  checkInputField(req.body);
 });
 
 router.post('/logout', (req, res) => {
