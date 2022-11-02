@@ -11,6 +11,7 @@ router.get('/login', (req, res) => {
 router.post('/signup', (req, res) => {
   console.log('RES:', res.body);
   console.log('REQ:', req.body);
+  res.send('POST request to the homepage')
 });
 
 router.post('/logout', (req, res) => {

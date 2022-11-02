@@ -1,16 +1,40 @@
 import './styles/SignupForm.scss';
+import axios from 'axios';
 
 function SignupForm(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(event.target[0].value)
-    console.log('got to handle submit');
+
+    const userData = {
+      firstName: event.target[0].value,
+      lastName: event.target[1].value,
+      email: event.target[2].value,
+      password: event.target[3].value,
+      confirmPass: event.target[4].value
+    }
+
+    console.log(userData);
+
+    axios.post('/user/signup', userData).then((res) => {
+      console.log(res)
+    }).catch((err) => {
+      console.log(err)
+    })
+
+    // axios({
+    //   method: 'post',
+    //   url: '/user/signup',
+    //   data: userData
+    // }).then((res) => {
+    //   console.log(res)
+    // })
+
   }
 
   return (
     <div className='signup-page'>
-      <form className='signup-form' action='/user/signup' method='POST' onSubmit={handleSubmit}>
+      <form className='signup-form' onSubmit={handleSubmit}>
         <div className='form-header'>
           <label>Create a Currency Control account.</label>
           <label>Get started on your personal money-saving journey!</label>
