@@ -14,21 +14,11 @@ function SignupForm(props) {
       confirmPass: event.target[4].value
     }
 
-    console.log(userData);
-
     axios.post('/user/signup', userData).then((res) => {
-      console.log(res)
+      console.log(res.data)
     }).catch((err) => {
       console.log(err)
     })
-
-    // axios({
-    //   method: 'post',
-    //   url: '/user/signup',
-    //   data: userData
-    // }).then((res) => {
-    //   console.log(res)
-    // })
 
   }
 
