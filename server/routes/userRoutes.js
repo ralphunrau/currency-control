@@ -10,14 +10,19 @@ router.get('/login', (req, res) => {
 })
 
 router.post('/signup', (req, res) => {
-  console.log('RES:', res.body);
-  console.log('REQ:', req.body);
-
   console.log(checkInputField(req.body))
+
   // If errors are empty
   if (checkInputField(req.body).length !== 0) {
     res.send(checkInputField(req.body));
   } else {
+    const newUser = {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      password: req.body.password
+    }
+    addNewUser(newUser);
     res.send('Pass');
   }
 });
