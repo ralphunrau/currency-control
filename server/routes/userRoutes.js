@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { addNewUser } = require('../db/knex');
+const { addNewUser } = require('../db/db');
 const { checkInputField } = require('../helpers/checkInputField');
 
 router.get('/login', (req, res) => {
