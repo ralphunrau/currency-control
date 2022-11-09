@@ -42,7 +42,7 @@ const checkInputField = (user) => {
     errors.push('Password confirmation is too long!');
   }
 
-  if (user.password !== user.password.confirmPass) {
+  if (user.password !== user.confirmPass) {
     errors.push('Passwords must match!');
   }
 
