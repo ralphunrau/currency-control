@@ -19,15 +19,18 @@ const pg = require('knex')({
 // };
 
 const addNewUser = async (user) => {
+
   const newUser = {
+    first_name: user.firstName,
+    last_name: user.lastName,
     email: user.email,
-    username: user.username,
     password: user.password
   }
-  return knex('users')
+  
+  return pg('users')
     .insert({...newUser})
     .then(() => newUser)
-    .catch(e => console.log(e.message));
+    .catch(e => console.log('Error:', e.message));
 };
 
 module.exports = {
