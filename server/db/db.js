@@ -13,6 +13,14 @@ const addNewUser = (user) => {
     .catch(e => console.log('Error:', e.message));
 };
 
+const getUserByEmail = (email) => {
+  return knex('users')
+    .where({ email: email })
+    .then((res) => res[0])
+    .catch(e => console.log(e.message));
+};
+
 module.exports = {
-  addNewUser
+  addNewUser,
+  getUserByEmail
 }
