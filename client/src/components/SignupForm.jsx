@@ -20,6 +20,7 @@ function SignupForm(props) {
       console.log(err)
     })
 
+    props.setUserForm('None');
   }
 
   return (
