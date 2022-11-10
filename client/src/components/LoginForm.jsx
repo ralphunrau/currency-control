@@ -1,9 +1,28 @@
 import './styles/LoginForm.scss';
+import axios from 'axios';
 
 function LoginForm(props) {
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const userInfo = {
+      email: event.target[0].value,
+      password: event.target[1].value
+    }
+
+    axios.post('/user/login', userInfo).then((res) => {
+      console.log(res.data)
+    }).catch((err) => {
+      console.log(err)
+    })
+
+    props.setUserForm('None');
+  }
+
   return (
     <div className='login-page'>
-      <form className='login-form' action='/login' method='get' onSubmit={() => props.setUserForm('None')}>
+      <form className='login-form' action='/login' method='get' onSubmit={handleSubmit}>
         <div className='form-header'>
           <label>Log into your Currency Control account!</label>
         </div>

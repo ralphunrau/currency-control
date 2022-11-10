@@ -1,12 +1,23 @@
 const express = require('express');
 const router = express.Router();
 
-const { addNewUser } = require('../db/db');
+const { addNewUser, getUserByEmail } = require('../db/db');
 const { checkInputField } = require('../helpers/checkInputField');
 
-router.get('/login', (req, res) => {
-  // check if user exists here
-  console.log('heyyyy')
+router.post('/login', (req, res) => {
+  getUserByEmail(req.body.email)
+    .then((user) => {
+      if (user.password === req.body.password) {
+        // set cookie
+        res.send(user);
+      } else {
+        // user was not logged in
+      }
+
+    })
+    .catch((err) => {
+      console.log('Error:', err)
+    })
 })
 
 router.post('/signup', (req, res) => {
