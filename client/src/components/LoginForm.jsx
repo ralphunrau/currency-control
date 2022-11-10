@@ -22,7 +22,7 @@ function LoginForm(props) {
 
   return (
     <div className='login-page'>
-      <form className='login-form' action='/login' method='get' onSubmit={handleSubmit}>
+      <form className='login-form' onSubmit={handleSubmit}>
         <div className='form-header'>
           <label>Log into your Currency Control account!</label>
         </div>
