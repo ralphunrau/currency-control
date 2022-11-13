@@ -6,11 +6,10 @@ const { checkInputField } = require('../helpers/checkInputField');
 
 router.post('/login', (req, res) => {
 
-  // need to add cookies
-
   getUserByEmail(req.body.email)
     .then((user) => {
       if (user.password === req.body.password) {
+        req.session.user = user.id;
         res.send(user);
       } else {
         res.sendStatus(403);

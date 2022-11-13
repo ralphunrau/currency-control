@@ -10,6 +10,12 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1', 'key2'],
+  maxAge: 12 * 60 * 60 * 1000 // 12 Hour Cookie
+}))
+
 const userRoutes = require('./routes/userRoutes');
 app.use('/user', userRoutes);
 
