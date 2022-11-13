@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const cors = require('cors');
 const app = express();
+const cookieSession = require('cookie-session');
 
 app.use(morgan('dev'));
 app.use(cors());
