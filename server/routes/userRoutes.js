@@ -32,7 +32,12 @@ router.post('/signup', (req, res) => {
       password: req.body.password
     }
     addNewUser(newUser);
-    res.send(newUser);
+    getUserByEmail(newUser.email)
+      .then((user) => {
+        req.session.user = user.id;
+        res.send(newUser);
+      })
+      .catch((err) => {console.log('Error:', err)})
   }
 });
 
