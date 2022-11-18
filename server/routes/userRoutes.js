@@ -20,28 +20,29 @@ router.post('/login', (req, res) => {
 
 router.post('/signup', (req, res) => {
 
+  if (checkInputField(req.body).length !== 0) {
+    res.send(checkInputField(req.body));
+    return;
+  }
+
   getUserByEmail(req.body.email)
     .then((email) => {
       if (email) {
         res.send('Email already has an account!');
       } else {
-        if (checkInputField(req.body).length !== 0) {
-          res.send(checkInputField(req.body));
-        } else {
-          const newUser = {
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            email: req.body.email,
-            password: req.body.password
-          }
-          addNewUser(newUser);
-          getUserByEmail(newUser.email)
-            .then((user) => {
-              req.session.user = user.id;
-              res.send(newUser);
-            })
-            .catch((err) => {console.log('Error:', err)})
+        const newUser = {
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          email: req.body.email,
+          password: req.body.password
         }
+        addNewUser(newUser);
+        getUserByEmail(newUser.email)
+          .then((user) => {
+            req.session.user = user.id;
+            res.send(newUser);
+          })
+          .catch((err) => {console.log('Error:', err)})
       }
     })
 
