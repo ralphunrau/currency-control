@@ -20,7 +20,12 @@ router.post('/login', (req, res) => {
 
 router.post('/signup', (req, res) => {
 
-  // need to add error messages
+  getUserByEmail(req.body.email)
+    .then((email) => {
+      if (email) {
+        res.send('Email already has an account!');
+      }
+    })
 
   if (checkInputField(req.body).length !== 0) {
     res.send(checkInputField(req.body));
