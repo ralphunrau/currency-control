@@ -4,6 +4,8 @@ import Logo from '../Logo.png';
 
 function Header(props) {
 
+  console.log(document.cookie);
+
   return (
     <div className='Header'>
       <section className='header-left'>

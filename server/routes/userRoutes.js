@@ -12,7 +12,7 @@ router.post('/login', (req, res) => {
         req.session.user = user.id;
         res.send(user);
       } else {
-        res.sendStatus(403);
+        res.send('Password is invalid.');
       }
     })
     .catch((err) => {console.log('Error:', err)})
@@ -28,7 +28,7 @@ router.post('/signup', (req, res) => {
   getUserByEmail(req.body.email)
     .then((email) => {
       if (email) {
-        res.send('Email already has an account!');
+        res.send('Email already has an account.');
       } else {
         const newUser = {
           firstName: req.body.firstName,
@@ -49,7 +49,8 @@ router.post('/signup', (req, res) => {
 });
 
 router.post('/logout', (req, res) => {
-  // res.json({test: 'test', test1: 'test1'})
+  req.session.user = null;
+  res.send('User successfully logged out.');
 })
 
 module.exports = router;
