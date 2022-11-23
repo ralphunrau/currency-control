@@ -40,7 +40,9 @@ function LoginForm(props) {
           <input type='password' id='password'></input>
         </div>
         <input type="submit" />
-        <p>{errors}</p>
+        <ul>{errors.map(err => {
+          return <li>{err}</li>
+        })}</ul>
       </form>
     </div>
   );
