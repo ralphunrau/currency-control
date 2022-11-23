@@ -12,7 +12,6 @@ function App() {
   
   return (
     <div>
-      {/* <Testing /> */}
       <Header setUserForm={setUserForm}/>
       { userForm === 'None' && <Body /> }
       { userForm === 'Login' && <LoginForm setUserForm={setUserForm} /> }

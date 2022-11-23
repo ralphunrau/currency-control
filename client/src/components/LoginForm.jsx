@@ -1,23 +1,29 @@
 import './styles/LoginForm.scss';
 import axios from 'axios';
+import React, { useState } from 'react';
 
 function LoginForm(props) {
 
+  const [errors, setErrors] = useState([]);
+
+  
   const handleSubmit = (event) => {
     event.preventDefault();
-
+    
     const userInfo = {
       email: event.target[0].value,
       password: event.target[1].value
     }
-
+    
     axios.post('/user/login', userInfo).then((res) => {
-      console.log(res.data)
+      if (typeof res.data[0] === 'string') {
+        setErrors(res.data);
+        return;
+      }
+      props.setUserForm('None');
     }).catch((err) => {
       console.log(err)
     })
-
-    props.setUserForm('None');
   }
 
   return (
@@ -35,6 +41,7 @@ function LoginForm(props) {
           <input type='password' id='password'></input>
         </div>
         <input type="submit" />
+        <p>{errors}</p>
       </form>
     </div>
   );
