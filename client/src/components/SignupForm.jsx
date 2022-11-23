@@ -1,7 +1,10 @@
 import './styles/SignupForm.scss';
 import axios from 'axios';
+import React, { useState } from 'react';
 
 function SignupForm(props) {
+
+  const [errors, setErrors] = useState([]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -15,12 +18,15 @@ function SignupForm(props) {
     }
 
     axios.post('/user/signup', userData).then((res) => {
-      console.log(res.data)
+      if (typeof res.data[0] === 'string') {
+        setErrors(res.data);
+        console.log(res.data)
+        return;
+      }
+      props.setUserForm('None');
     }).catch((err) => {
       console.log(err)
     })
-
-    props.setUserForm('None');
   }
 
   return (
@@ -51,6 +57,9 @@ function SignupForm(props) {
           <input type='password' id='confirmPass'></input>
         </div>
         <input type='submit'/>
+        <ul>{errors.map(err => {
+          return <li>{err}</li>
+        })}</ul>
       </form>
     </div>
   );
