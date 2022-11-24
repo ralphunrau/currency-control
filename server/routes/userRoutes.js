@@ -8,6 +8,11 @@ router.post('/login', (req, res) => {
 
   getUserByEmail(req.body.email)
     .then((user) => {
+      if (user === undefined) {
+        res.send(['Email is not registered.']);
+        return;
+      }
+
       if (user.password === req.body.password) {
         req.session.user = user.id;
         res.send(user);
