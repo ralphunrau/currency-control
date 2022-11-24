@@ -19,6 +19,7 @@ function LoginForm(props) {
         setErrors(res.data);
         return;
       }
+      props.setUser(res.data);
       props.setUserForm('None');
     }).catch((err) => {
       console.log(err)
@@ -42,7 +43,7 @@ function LoginForm(props) {
         <input type="submit" />
         <ul>
           {errors.map(err => {
-            return <li key='err'>{err}</li>
+            return <li key={err}>{err}</li>
           })}
         </ul>
       </form>

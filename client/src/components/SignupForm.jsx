@@ -57,7 +57,7 @@ function SignupForm(props) {
         </div>
         <input type='submit'/>
         <ul>{errors.map(err => {
-          return <li>{err}</li>
+          return <li key={err}>{err}</li>
         })}</ul>
       </form>
     </div>

@@ -11,8 +11,10 @@ function Header(props) {
         <h1>Currency Control</h1>
       </section>
       <section className='header-right'>
-        <Button text='Login' setUserForm={props.setUserForm}/>
-        <Button text='Signup' setUserForm={props.setUserForm}/>
+        {!props.user
+          ?  <><Button text='Login' setUserForm={props.setUserForm}/> <Button text='Signup' setUserForm={props.setUserForm}/></>
+          : <Button text='Logout' setUser={props.setUser} setUserForm={props.setUserForm}/>
+        }
       </section>
     </div>
   )

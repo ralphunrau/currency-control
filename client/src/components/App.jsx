@@ -9,13 +9,14 @@ import React, { useState } from 'react';
 function App() {
 
   const [userForm, setUserForm] = useState('None');
+  const [user, setUser] = useState({});
   
   return (
     <div>
-      <Header setUserForm={setUserForm}/>
+      <Header user={user} setUser={setUser} setUserForm={setUserForm}/>
       { userForm === 'None' && <Body /> }
-      { userForm === 'Login' && <LoginForm setUserForm={setUserForm} /> }
-      { userForm === 'Signup' && <SignupForm setUserForm={setUserForm} /> }
+      { userForm === 'Login' && <LoginForm setUserForm={setUserForm} setUser={setUser}/> }
+      { userForm === 'Signup' && <SignupForm setUserForm={setUserForm} setUser={setUser}/> }
       <Footer />
     </div>
   );
