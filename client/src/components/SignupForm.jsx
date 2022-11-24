@@ -20,7 +20,6 @@ function SignupForm(props) {
     axios.post('/user/signup', userData).then((res) => {
       if (typeof res.data[0] === 'string') {
         setErrors(res.data);
-        console.log(res.data)
         return;
       }
       props.setUserForm('None');
