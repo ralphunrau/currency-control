@@ -4,8 +4,6 @@ import Logo from '../Logo.png';
 
 function Header(props) {
 
-  console.log(props.user)
-
   return (
     <div className='Header'>
       <section className='header-left'>
@@ -15,7 +13,7 @@ function Header(props) {
       <section className='header-right'>
         {Object.keys(props.user).length === 0
           ?  <><Button text='Login' setUserForm={props.setUserForm}/> <Button text='Signup' setUserForm={props.setUserForm}/></>
-          : <Button text='Logout' setUser={props.setUser} setUserForm={props.setUserForm}/>
+          : <><p>Welcome {props.user.firstName}!</p><Button text='Logout' setUser={props.setUser} setUserForm={props.setUserForm}/></>
         }
       </section>
     </div>
