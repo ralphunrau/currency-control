@@ -14,7 +14,6 @@ router.post('/login', (req, res) => {
       }
 
       if (user.password === req.body.password) {
-        req.session.user = user.id;
         res.send({id: user.id, firstName: user.first_name, lastName: user.last_name, email: user.email});
       } else {
         res.send(['Password is invalid.']);
@@ -44,7 +43,6 @@ router.post('/signup', (req, res) => {
         addNewUser(newUser);
         getUserByEmail(newUser.email)
           .then((user) => {
-            req.session.user = user.id;
             res.send({id: user.id, firstName: user.first_name, lastName: user.last_name, email: user.email});
           })
           .catch((err) => {console.log('Error:', err)})
@@ -54,7 +52,6 @@ router.post('/signup', (req, res) => {
 });
 
 router.post('/logout', (req, res) => {
-  req.session.user = null;
   res.send(['User successfully logged out.']);
 })
 

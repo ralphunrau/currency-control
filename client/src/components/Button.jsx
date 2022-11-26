@@ -1,5 +1,5 @@
 import './styles/Button.scss';
-import axios from 'axios';
+// import axios from 'axios';
 
 function Button (props) {
 
@@ -7,11 +7,11 @@ function Button (props) {
     event.preventDefault();
 
     if (props.text === 'Logout') {
-      axios.post('/user/logout').then((res) => {
-        console.log(res.data)
-      }).catch((err) => {
-        console.log(err)
-      })
+      // axios.post('/user/logout').then((res) => {
+      //   console.log(res.data)
+      // }).catch((err) => {
+      //   console.log(err)
+      // })
       props.setUser({});
       props.setUserForm('None');
       return;
