@@ -12,7 +12,7 @@ function Button (props) {
       }).catch((err) => {
         console.log(err)
       })
-      props.setUser();
+      props.setUser({});
       props.setUserForm('None');
       return;
     }
