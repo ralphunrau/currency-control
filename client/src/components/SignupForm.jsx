@@ -22,6 +22,7 @@ function SignupForm(props) {
         setErrors(res.data);
         return;
       }
+      props.setUser(res.data)
       props.setUserForm('None');
     }).catch((err) => {
       console.log(err)
