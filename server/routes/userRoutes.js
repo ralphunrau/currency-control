@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const bcrypt = require('bcrypt');
 
 const { addNewUser, getUserByEmail } = require('../db/db');
 const { checkInputField } = require('../helpers/checkInputField');
