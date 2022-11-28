@@ -14,11 +14,14 @@ router.post('/login', (req, res) => {
         return;
       }
 
-      if (user.password === req.body.password) {
-        res.send({id: user.id, firstName: user.first_name, lastName: user.last_name, email: user.email});
-      } else {
-        res.send(['Password is invalid.']);
-      }
+      bcrypt.compare(req.body.password, user.password, (err, result) => {
+        if (response) {
+          res.send({id: user.id, firstName: user.first_name, lastName: user.last_name, email: user.email});
+        } else {
+          res.send(['Password is invalid.']);
+        }
+      })
+      
     })
     .catch((err) => {console.log('Error:', err)})
 })
