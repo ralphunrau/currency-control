@@ -30,25 +30,33 @@ router.post('/signup', (req, res) => {
     return;
   }
 
-  getUserByEmail(req.body.email)
-    .then((email) => {
-      if (email) {
-        res.send(['Email already has an account.']);
-      } else {
-        const newUser = {
-          firstName: req.body.firstName,
-          lastName: req.body.lastName,
-          email: req.body.email,
-          password: req.body.password
+  bcrypt.hash(req.body.password, 10, (err, hash) => {
+
+    if (err) {
+      console.log(err);
+    }
+
+    getUserByEmail(req.body.email)
+      .then((email) => {
+        if (email) {
+          res.send(['Email already has an account.']);
+        } else {
+          const newUser = {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            password: hash
+          }
+          addNewUser(newUser);
+          getUserByEmail(newUser.email)
+            .then((user) => {
+              res.send({id: user.id, firstName: user.first_name, lastName: user.last_name, email: user.email});
+            })
+            .catch((err) => {console.log('Error:', err)})
         }
-        addNewUser(newUser);
-        getUserByEmail(newUser.email)
-          .then((user) => {
-            res.send({id: user.id, firstName: user.first_name, lastName: user.last_name, email: user.email});
-          })
-          .catch((err) => {console.log('Error:', err)})
-      }
-    })
+      })
+  })
+
 
 });
 
