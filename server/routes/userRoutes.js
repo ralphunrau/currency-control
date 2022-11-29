@@ -53,9 +53,9 @@ router.post('/signup', (req, res) => {
           addNewUser(newUser);
           getUserByEmail(newUser.email)
             .then((user) => {
+              console.log(user)
               res.send({id: user.id, firstName: user.first_name, lastName: user.last_name, email: user.email});
             })
-            .catch((err) => {console.log('Error:', err)})
         }
       })
   })
