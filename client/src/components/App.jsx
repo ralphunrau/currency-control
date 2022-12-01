@@ -12,12 +12,15 @@ function App() {
   const [userForm, setUserForm] = useState('None');
   const [user, setUser] = useState({});
   
+  // Keeps user logged in if page refreshes
   axios.defaults.withCredentials = true;
 
   useEffect(() => {
     axios.get('/user/login')
       .then((res) => {
-        console.log(res)
+        if (res.data.loggedIn) {
+          setUser(res.data.user)
+        }
       })
   }, [])
 

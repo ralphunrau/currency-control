@@ -5,6 +5,14 @@ const bcrypt = require('bcrypt');
 const { addNewUser, getUserByEmail } = require('../db/db');
 const { checkInputField } = require('../helpers/checkInputField');
 
+router.get('/login', (req, res) => {
+  if (req.session.user) {
+    res.send({loggedIn: true, user: req.session.user})
+  } else {
+    res.send({loggedIn: false})
+  }
+})
+
 router.post('/login', (req, res) => {
 
   getUserByEmail(req.body.email)
@@ -16,7 +24,7 @@ router.post('/login', (req, res) => {
 
       bcrypt.compare(req.body.password, user.password, (err, result) => {
         if (result) {
-          req.session.user = user.id;
+          req.session.user = {id: user.id, firstName: user.first_name, lastName: user.last_name, email: user.email};
           res.send({id: user.id, firstName: user.first_name, lastName: user.last_name, email: user.email});
         } else {
           res.send(['Password is invalid.']);
@@ -54,7 +62,7 @@ router.post('/signup', (req, res) => {
           addNewUser(newUser);
           getUserByEmail(newUser.email)
             .then((user) => {
-              console.log(user)
+              req.session.user = {id: user.id, firstName: user.first_name, lastName: user.last_name, email: user.email};
               res.send({id: user.id, firstName: user.first_name, lastName: user.last_name, email: user.email});
             })
         }
@@ -65,6 +73,7 @@ router.post('/signup', (req, res) => {
 });
 
 router.post('/logout', (req, res) => {
+  req.session.user = null;
   res.send(['User successfully logged out.']);
 })
 
