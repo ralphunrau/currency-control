@@ -4,13 +4,23 @@ import Body from './Body';
 import Footer from './Footer';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
-import React, { useState } from 'react';
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
 
 function App() {
 
   const [userForm, setUserForm] = useState('None');
   const [user, setUser] = useState({});
   
+  axios.defaults.withCredentials = true;
+
+  useEffect(() => {
+    axios.get('/user/login')
+      .then((res) => {
+        console.log(res)
+      })
+  }, [])
+
   return (
     <div>
       <Header user={user} setUser={setUser} setUserForm={setUserForm}/>
