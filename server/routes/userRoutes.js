@@ -15,7 +15,7 @@ router.post('/login', (req, res) => {
       }
 
       bcrypt.compare(req.body.password, user.password, (err, result) => {
-        if (response) {
+        if (result) {
           res.send({id: user.id, firstName: user.first_name, lastName: user.last_name, email: user.email});
         } else {
           res.send(['Password is invalid.']);
