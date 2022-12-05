@@ -27,7 +27,7 @@ function App() {
   return (
     <div>
       <Header user={user} setUser={setUser} setUserForm={setUserForm}/>
-      { userForm === 'None' && <Body /> }
+      { userForm === 'None' && <Body user={user}/> }
       { userForm === 'Login' && <LoginForm setUserForm={setUserForm} setUser={setUser}/> }
       { userForm === 'Signup' && <SignupForm setUserForm={setUserForm} setUser={setUser}/> }
       <Footer />
