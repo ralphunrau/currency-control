@@ -8,7 +8,7 @@ const app = express();
 
 app.use(morgan('dev'));
 app.use(cors({
-  origin: ["http://localhost:3002"],
+  origin: ["http://localhost:3000"],
   methods: ['GET', 'POST'],
   credentials: true
 }));
