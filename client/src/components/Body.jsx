@@ -1,5 +1,5 @@
 import './styles/Body.scss';
-import TransactionDisplay from './TransactionDisplay';
+import TransactionDisplay from './TransactionDisplay/index';
 import TransactionForm from './TransactionForm';
 
 function Body(props) {

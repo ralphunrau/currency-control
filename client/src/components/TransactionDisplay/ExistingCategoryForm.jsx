@@ -1,4 +1,4 @@
-import './styles/TransactionDisplay.scss';
+import '../styles/TransactionDisplay/existingCategoryForm.scss';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -7,7 +7,7 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import React, {useState} from 'react';
 
 
-function TransactionDisplay(props) {
+function ExistingCategoryForm(props) {
 
   const [category, setCategory] = useState('Food');
 
@@ -18,7 +18,7 @@ function TransactionDisplay(props) {
   }
 
   return (
-    <div className='transaction-display-main'>
+    <div>
       <FormControl fullWidth>
       <InputLabel id="demo-simple-select-label">Select a category</InputLabel>
         <Select
@@ -35,10 +35,11 @@ function TransactionDisplay(props) {
           <MenuItem value={'Utilities'}>Utilities</MenuItem>
           <MenuItem value={'Medical'}>Medical</MenuItem>
           <MenuItem value={'Debt Payments'}>Debt Payments</MenuItem>
+          <MenuItem value={'Add new category'}>+ add new category</MenuItem>
         </Select>
       </FormControl>
     </div>
   );
 }
 
-export default TransactionDisplay;
+export default ExistingCategoryForm
