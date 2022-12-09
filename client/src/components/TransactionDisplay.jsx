@@ -4,8 +4,19 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import React, {useState} from 'react';
+
 
 function TransactionDisplay(props) {
+
+  const [category, setCategory] = useState('Food');
+
+  const handleChange = (event) => {
+    event.preventDefault();
+
+    setCategory(event.target.value);
+  }
+
   return (
     <div className='transaction-display-main'>
       <FormControl fullWidth>
@@ -13,17 +24,17 @@ function TransactionDisplay(props) {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          // value={age}
+          value={category}
           label="expense-category"
-          // onChange={handleChange}
+          onChange={handleChange}
         >
-          <MenuItem value={10}>Food</MenuItem>
-          <MenuItem value={20}>Clothing</MenuItem>
-          <MenuItem value={30}>Transportation</MenuItem>
-          <MenuItem value={40}>Housing</MenuItem>
-          <MenuItem value={50}>Utilities</MenuItem>
-          <MenuItem value={60}>Medical</MenuItem>
-          <MenuItem value={70}>Debt Payments</MenuItem>
+          <MenuItem value={'Food'}>Food</MenuItem>
+          <MenuItem value={'Clothing'}>Clothing</MenuItem>
+          <MenuItem value={'Transportation'}>Transportation</MenuItem>
+          <MenuItem value={'Housing'}>Housing</MenuItem>
+          <MenuItem value={'Utilities'}>Utilities</MenuItem>
+          <MenuItem value={'Medical'}>Medical</MenuItem>
+          <MenuItem value={'Debt Payments'}>Debt Payments</MenuItem>
         </Select>
       </FormControl>
     </div>
