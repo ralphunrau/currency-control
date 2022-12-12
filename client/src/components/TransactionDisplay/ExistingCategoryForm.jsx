@@ -5,16 +5,14 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import React, {useState} from 'react';
-
+import NewCategoryForm from './NewCategoryForm';
 
 function ExistingCategoryForm(props) {
-
-  const [category, setCategory] = useState('Food');
 
   const handleChange = (event) => {
     event.preventDefault();
 
-    setCategory(event.target.value);
+    props.setCategory(event.target.value);
   }
 
   return (
@@ -24,7 +22,7 @@ function ExistingCategoryForm(props) {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={category}
+          value={props.category}
           label="expense-category"
           onChange={handleChange}
         >
@@ -42,4 +40,4 @@ function ExistingCategoryForm(props) {
   );
 }
 
-export default ExistingCategoryForm
+export default ExistingCategoryForm;
