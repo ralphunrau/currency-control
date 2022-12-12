@@ -5,14 +5,19 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import React, {useState} from 'react';
-import NewCategoryForm from './NewCategoryForm';
+import TextField from '@mui/material/TextField';
+
 
 function ExistingCategoryForm(props) {
+
+  const [category, setCategory] = useState('Food');
 
   const handleChange = (event) => {
     event.preventDefault();
 
-    props.setCategory(event.target.value);
+
+
+    setCategory(event.target.value);
   }
 
   return (
@@ -22,7 +27,7 @@ function ExistingCategoryForm(props) {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={props.category}
+          value={category}
           label="expense-category"
           onChange={handleChange}
         >
@@ -33,11 +38,14 @@ function ExistingCategoryForm(props) {
           <MenuItem value={'Utilities'}>Utilities</MenuItem>
           <MenuItem value={'Medical'}>Medical</MenuItem>
           <MenuItem value={'Debt Payments'}>Debt Payments</MenuItem>
+          {category === 'Add new category' ?
+          <TextField id="outlined-basic" label="Outlined" variant="outlined" /> :
           <MenuItem value={'Add new category'}>+ add new category</MenuItem>
+          }
         </Select>
       </FormControl>
     </div>
   );
 }
 
-export default ExistingCategoryForm;
+export default ExistingCategoryForm
