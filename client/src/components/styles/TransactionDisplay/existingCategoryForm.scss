@@ -1,3 +1,15 @@
 .transaction-display-main {
   width: 30%;
+  
+}
+
+// targets MUI list component
+.css-6hp17o-MuiList-root-MuiMenu-list {
+  display: flex;
+  flex-direction: column;
+  
+  // targets MUI text field component
+  .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
+    margin: 0px 16px 0px 16px;
+  }
 }

@@ -13,9 +13,7 @@ function ExistingCategoryForm(props) {
   const [category, setCategory] = useState('Food');
 
   const handleChange = (event) => {
-    event.preventDefault();
-
-
+    // event.preventDefault();
 
     setCategory(event.target.value);
   }
@@ -38,10 +36,7 @@ function ExistingCategoryForm(props) {
           <MenuItem value={'Utilities'}>Utilities</MenuItem>
           <MenuItem value={'Medical'}>Medical</MenuItem>
           <MenuItem value={'Debt Payments'}>Debt Payments</MenuItem>
-          {category === 'Add new category' ?
-          <TextField id="outlined-basic" label="Outlined" variant="outlined" /> :
-          <MenuItem value={'Add new category'}>+ add new category</MenuItem>
-          }
+          <TextField placeholder='Add a new category' variant="standard" />
         </Select>
       </FormControl>
     </div>
