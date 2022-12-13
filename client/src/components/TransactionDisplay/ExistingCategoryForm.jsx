@@ -1,11 +1,11 @@
 import '../styles/TransactionDisplay/existingCategoryForm.scss';
-import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select from '@mui/material/Select';
 import React, {useState} from 'react';
 import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
 
 
 function ExistingCategoryForm(props) {
@@ -13,9 +13,13 @@ function ExistingCategoryForm(props) {
   const [category, setCategory] = useState('Food');
 
   const handleChange = (event) => {
-    // event.preventDefault();
-
     setCategory(event.target.value);
+  }
+
+  const handleNewCategorySubmit = (event) => {
+    event.preventDefault();
+
+    
   }
 
   return (
@@ -36,7 +40,9 @@ function ExistingCategoryForm(props) {
           <MenuItem value={'Utilities'}>Utilities</MenuItem>
           <MenuItem value={'Medical'}>Medical</MenuItem>
           <MenuItem value={'Debt Payments'}>Debt Payments</MenuItem>
-          <TextField placeholder='Add a new category' variant="standard" />
+          <Box component='form' onSubmit={handleNewCategorySubmit}>
+            <TextField placeholder='Add a new category' variant="standard" />
+          </Box>
         </Select>
       </FormControl>
     </div>
