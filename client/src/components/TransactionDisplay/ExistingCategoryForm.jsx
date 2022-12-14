@@ -6,7 +6,7 @@ import Select from '@mui/material/Select';
 import React, {useState} from 'react';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
-
+import axios from 'axios';
 
 function ExistingCategoryForm(props) {
 
@@ -19,7 +19,11 @@ function ExistingCategoryForm(props) {
   const handleNewCategorySubmit = (event) => {
     event.preventDefault();
 
-    
+    axios.post('', event.target[0].value).then((res) => {
+
+    }).catch((err) => {
+      console.log(err)
+    })
   }
 
   return (
