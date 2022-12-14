@@ -10,6 +10,7 @@ import axios from 'axios';
 
 function ExistingCategoryForm(props) {
 
+  const [userCategories, setUserCategories] = useState([]);
   const [category, setCategory] = useState('Food');
 
   const handleChange = (event) => {
@@ -18,8 +19,12 @@ function ExistingCategoryForm(props) {
 
   const userCreatedExpenseCategories = () => {
     axios.get('/expense/category/user').then((res) => {
-      console.log(res)
-      return res
+      const categories = res.data.map((category, index) => {
+        console.log(category)
+        return <MenuItem key={index} value={category.category}>{category.category}</MenuItem>
+      })
+
+      setUserCategories(categories)
     }).catch((err) => {
       console.log(err)
     })
@@ -29,31 +34,14 @@ function ExistingCategoryForm(props) {
     event.preventDefault();
 
     axios.post('/expense/category/new', {category: event.target[0].value}).then((res) => {
-      
     }).catch((err) => {
       console.log(err)
     })
   }
 
-  // const items = props.products.map((item, index) => (    
-  //   <Tab 
-  //     id={`horizontal-tab-${index}`} 
-  //     key={`horizontal-tab-${index}`}
-  //     {...a11yProps(index)}
-  //     onClick={()=> toggleShow(item.asin)} 
-  //     label={(
-  //       <Label
-  //         key={`item-${index}`}
-  //         id={`item-${index}`}
-  //         product={item}
-  //         value={value}
-  //         wishes={props.wishes}
-  //       />
-  //     )}
-  //   />
-  // ));
-
-  userCreatedExpenseCategories();
+  useEffect(() => {
+    userCreatedExpenseCategories()
+  }, [])
 
   return (
     <div>
@@ -73,7 +61,7 @@ function ExistingCategoryForm(props) {
           <MenuItem value={'Utilities'}>Utilities</MenuItem>
           <MenuItem value={'Medical'}>Medical</MenuItem>
           <MenuItem value={'Debt Payments'}>Debt Payments</MenuItem>
-          
+          {userCategories}
           <Box component='form' onSubmit={handleNewCategorySubmit}>
             <TextField placeholder='Add a new category' variant="standard" />
           </Box>
