@@ -7,34 +7,32 @@ const addNewUser = (user) => {
     email: user.email,
     password: user.password
   }
-  return knex('users')
+  return knex('user')
     .insert({...newUser})
     .then(() => newUser)
     .catch(e => console.log('Error:', e.message));
 };
 
 const getUserByEmail = (email) => {
-  return knex('users')
+  return knex('user')
     .where({ email: email })
     .then((res) => res[0])
     .catch(e => console.log(e.message));
 };
 
-const addNewExpense = (category) => {
-  const newExpense = {
-    first_name: user.firstName,
-    last_name: user.lastName,
-    email: user.email,
-    password: user.password
+const addNewExpenseCategory = (expense) => {
+  const newExpenseCategory = {
+    user_id: expense.user,
+    category: expense.category
   }
-  return knex('expenses')
-    .insert({...newUser})
-    .then(() => newUser)
+  return knex('expense_category')
+    .insert({...newExpenseCategory})
+    .then(() => newExpenseCategory)
     .catch(e => console.log('Error:', e.message));
 };
 
 module.exports = {
   addNewUser,
   getUserByEmail,
-  addNewExpense
+  addNewExpenseCategory
 }
