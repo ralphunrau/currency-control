@@ -31,10 +31,10 @@ const addNewExpenseCategory = (expenseCategory) => {
     .catch(e => console.log('Error:', e.message));
 };
 
-const getExpenseCategories = (user) => {
+const getExpenseCategories = (user_id) => {
   return knex('expense_category')
-  .where({ user_id: user.id })
-  .then((res) => res[0])
+  .where({user_id: user_id})
+  .then((res) => res)
   .catch(e => console.log(e.message));
 }
 
