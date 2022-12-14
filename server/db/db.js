@@ -20,7 +20,21 @@ const getUserByEmail = (email) => {
     .catch(e => console.log(e.message));
 };
 
+const addNewExpense = (category) => {
+  const newExpense = {
+    first_name: user.firstName,
+    last_name: user.lastName,
+    email: user.email,
+    password: user.password
+  }
+  return knex('expenses')
+    .insert({...newUser})
+    .then(() => newUser)
+    .catch(e => console.log('Error:', e.message));
+};
+
 module.exports = {
   addNewUser,
-  getUserByEmail
+  getUserByEmail,
+  addNewExpense
 }

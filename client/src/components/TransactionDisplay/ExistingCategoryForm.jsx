@@ -19,7 +19,7 @@ function ExistingCategoryForm(props) {
   const handleNewCategorySubmit = (event) => {
     event.preventDefault();
 
-    axios.post('/expense/create', event.target[0].value).then((res) => {
+    axios.post('/expense/create', {category: event.target[0].value}).then((res) => {
       
     }).catch((err) => {
       console.log(err)

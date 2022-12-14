@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
+const { addNewCategory } = require('../db/db');
+
 router.post('/create', (req, res) => {
-  console.log(res.data);
-  console.log(req.data);
+  addNewCategory(req.body.category)
 })
 
 module.exports = router;
