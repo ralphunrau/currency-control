@@ -28,7 +28,9 @@ app.use(session({
 }));
 
 const userRoutes = require('./routes/userRoutes');
+const expenseRoutes = require('./routes/expenseRoutes');
 app.use('/user', userRoutes);
+app.use('/expense', expenseRoutes);
 
 app.listen(8000, () => {
   console.log('Server hosted on port 8000')
