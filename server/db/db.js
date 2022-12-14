@@ -20,10 +20,10 @@ const getUserByEmail = (email) => {
     .catch(e => console.log(e.message));
 };
 
-const addNewExpenseCategory = (expense) => {
+const addNewExpenseCategory = (expenseCategory) => {
   const newExpenseCategory = {
-    user_id: expense.user,
-    category: expense.category
+    user_id: expenseCategory.user,
+    category: expenseCategory.category
   }
   return knex('expense_category')
     .insert({...newExpenseCategory})

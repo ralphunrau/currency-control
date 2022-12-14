@@ -16,7 +16,7 @@ exports.up = function(knex) {
       t.increments('id').primary();
       t.integer('user_id').unsigned().references('id').inTable('user').onDelete('cascade');
       t.string('type', 25);
-      t.date('date');
+      t.timestamps(true, true, true);
     })
 
     // creates expense category table
@@ -24,7 +24,7 @@ exports.up = function(knex) {
       t.increments('id').primary();
       t.integer('user_id').unsigned().references('id').inTable('user').onDelete('cascade');
       t.string('category', 25);
-      t.date('date');
+      t.timestamps(true, true, true);
     })
 };
 

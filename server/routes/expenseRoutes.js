@@ -7,7 +7,6 @@ router.post('/create', (req, res) => {
 
   const newExpenseCategory = {
     user: req.session.user.id,
-    amount: req.body.expense,
     category: req.body.category
   }
 
