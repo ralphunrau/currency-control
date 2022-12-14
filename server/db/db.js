@@ -31,8 +31,16 @@ const addNewExpenseCategory = (expenseCategory) => {
     .catch(e => console.log('Error:', e.message));
 };
 
+const getExpenseCategories = (user) => {
+  return knex('expense_category')
+  .where({ user_id: user.id })
+  .then((res) => res[0])
+  .catch(e => console.log(e.message));
+}
+
 module.exports = {
   addNewUser,
   getUserByEmail,
-  addNewExpenseCategory
+  addNewExpenseCategory,
+  getExpenseCategories
 }

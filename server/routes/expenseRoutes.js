@@ -3,7 +3,7 @@ const router = express.Router();
 
 const { addNewExpenseCategory } = require('../db/db');
 
-router.post('/create', (req, res) => {
+router.post('/category/new', (req, res) => {
 
   const newExpenseCategory = {
     user: req.session.user.id,
@@ -11,6 +11,10 @@ router.post('/create', (req, res) => {
   }
 
   addNewExpenseCategory(newExpenseCategory)
+})
+
+router.get('/category/user', (req, res) => {
+  
 })
 
 module.exports = router;

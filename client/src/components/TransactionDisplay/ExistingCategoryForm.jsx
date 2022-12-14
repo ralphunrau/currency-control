@@ -16,10 +16,18 @@ function ExistingCategoryForm(props) {
     setCategory(event.target.value);
   }
 
+  const userCreatedExpenseCategories = () => {
+    axios.post('/expense/category/user').then((res) => {
+      
+    }).catch((err) => {
+      console.log(err)
+    })
+  }
+
   const handleNewCategorySubmit = (event) => {
     event.preventDefault();
 
-    axios.post('/expense/create', {category: event.target[0].value}).then((res) => {
+    axios.post('/expense/category/new', {category: event.target[0].value}).then((res) => {
       
     }).catch((err) => {
       console.log(err)
