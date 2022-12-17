@@ -5,7 +5,6 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import React, {useEffect, useState} from 'react';
 import TextField from '@mui/material/TextField';
-import Box from '@mui/material/Box';
 import axios from 'axios';
 
 function ExistingCategoryForm(props) {
@@ -17,14 +16,17 @@ function ExistingCategoryForm(props) {
     setCategory(event.target.value);
   }
 
-  const userCreatedExpenseCategories = () => {
+  const loadCreatedExpenseCategories = (param) => {
     axios.get('/expense/category/user').then((res) => {
       const categories = res.data.map((category, index) => {
-        console.log(category)
         return <MenuItem key={index} value={category.category}>{category.category}</MenuItem>
       })
 
       setUserCategories(categories)
+
+      if (param) {
+        setCategory(param);
+      }
     }).catch((err) => {
       console.log(err)
     })
@@ -32,15 +34,18 @@ function ExistingCategoryForm(props) {
 
   const handleNewCategorySubmit = (event) => {
     event.preventDefault();
-
     axios.post('/expense/category/new', {category: event.target[0].value}).then((res) => {
-    }).catch((err) => {
+      loadCreatedExpenseCategories(res.data)
+    })
+    .catch((err) => {
       console.log(err)
     })
+
+    event.target.reset();
   }
 
   useEffect(() => {
-    userCreatedExpenseCategories()
+    loadCreatedExpenseCategories();
   }, [])
 
   return (
@@ -62,9 +67,9 @@ function ExistingCategoryForm(props) {
           <MenuItem value={'Medical'}>Medical</MenuItem>
           <MenuItem value={'Debt Payments'}>Debt Payments</MenuItem>
           {userCategories}
-          <Box component='form' onSubmit={handleNewCategorySubmit}>
+          <form onSubmit={handleNewCategorySubmit}>
             <TextField placeholder='Add a new category' variant="standard" />
-          </Box>
+          </form>
         </Select>
       </FormControl>
     </div>

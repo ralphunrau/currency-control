@@ -11,6 +11,8 @@ router.post('/category/new', (req, res) => {
   }
 
   addNewExpenseCategory(newExpenseCategory)
+  
+  res.send(req.body.category);
 })
 
 router.get('/category/user', (req, res) => {
