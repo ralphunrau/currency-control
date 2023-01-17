@@ -26,12 +26,32 @@ exports.up = function(knex) {
       t.string('category', 25);
       t.timestamps(true, true, true);
     })
+
+    // creates expense table
+    .createTable('expense', (t) => {
+      t.increments('id').primary();
+      t.integer('user_id').unsigned().references('id').inTable('user').onDelete('cascade');
+      t.integer('expense_category_id').unsigned().references('id').inTable('expense_category').onDelete('cascade');
+      t.string('name', 25);
+      t.timestamps(true, true, true);
+    })
+
+    // creates income table
+    .createTable('income', (t) => {
+      t.increments('id').primary();
+      t.integer('user_id').unsigned().references('id').inTable('user').onDelete('cascade');
+      t.integer('income_type_id').unsigned().references('id').inTable('income_type').onDelete('cascade');
+      t.string('name', 25);
+      t.timestamps(true, true, true);
+    })
 };
 
 exports.down = function(knex) {
 
   //drops tables in order
   return knex.schema
+    .dropTable('income')
+    .dropTable('expense')
     .dropTable('income_type')
     .dropTable('expense_category')
     .dropTable('user');
