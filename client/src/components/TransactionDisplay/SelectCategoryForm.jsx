@@ -8,13 +8,12 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import axios from 'axios';
 
-function ExistingCategoryForm(props) {
+function SelectCategoryForm(props) {
 
   const [userCategories, setUserCategories] = useState([]);
-  const [category, setCategory] = useState('Food');
 
   const handleChange = (event) => {
-    setCategory(event.target.value);
+    props.setCategory(event.target.value);
   }
 
   const loadUserExpenseCategories = (param) => {
@@ -26,7 +25,7 @@ function ExistingCategoryForm(props) {
       setUserCategories(categories)
 
       if (param) {
-        setCategory(param);
+        props.setCategory(param);
       }
     }).catch((err) => {
       console.log(err)
@@ -56,7 +55,7 @@ function ExistingCategoryForm(props) {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={category}
+          value={props.category}
           label="expense-category"
           onChange={handleChange}
         >
@@ -81,4 +80,4 @@ function ExistingCategoryForm(props) {
   );
 }
 
-export default ExistingCategoryForm
+export default SelectCategoryForm;
