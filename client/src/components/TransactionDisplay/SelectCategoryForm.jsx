@@ -1,4 +1,4 @@
-import '../styles/TransactionDisplay/existingCategoryForm.scss';
+import '../styles/TransactionDisplay/selectCategoryForm.scss';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';

@@ -1,6 +1,7 @@
 import '../styles/TransactionDisplay/index.scss';
 import SelectCategoryForm from './SelectCategoryForm';
-import React, {useEffect, useState} from 'react';
+import ExpenseDisplayForm from './ExpenseDisplayForm';
+import React, {useState} from 'react';
 
 
 function TransactionDisplay(props) {
@@ -10,7 +11,7 @@ function TransactionDisplay(props) {
   return (
     <div className='transaction-display-main'>
       <SelectCategoryForm category={category} setCategory={setCategory}/>
-      <div>{category}</div>
+      <ExpenseDisplayForm category={category}/>
     </div>
   );
 }
