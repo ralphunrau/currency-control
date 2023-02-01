@@ -1,15 +1,29 @@
 import '../styles/TransactionDisplay/index.scss';
 import SelectCategoryForm from './SelectCategoryForm';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import ExpenseChart from './ExpenseChart';
+import axios from 'axios';
 
 function TransactionDisplay(props) {
 
-  const [category, setCategory] = useState('Food');
+  const [userCategories, setUserCategories] = useState([]);
+
+  const loadExpenseCategories = () => {
+    axios.get('/expense/category/user').then((res) => {
+      const categories = res.data.map((elem) => elem.category)
+      setUserCategories(categories)
+    }).catch((err) => {
+      console.log(err)
+    })
+  }
+
+  useEffect(() => {
+    loadExpenseCategories();
+  }, [])
 
   return (
     <div className='transaction-display-main'>
-      <ExpenseChart />
+      <ExpenseChart userCategories={userCategories}/>
       {/* <SelectCategoryForm category={category} setCategory={setCategory}/> */}
     </div>
   );
