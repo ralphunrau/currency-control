@@ -1,0 +1,11 @@
+.expense-input-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  flex-direction: column;
+
+  input {
+    margin: 10px;
+  }
+}
