@@ -20,6 +20,19 @@ const getUserByEmail = (email) => {
     .catch(e => console.log(e.message));
 };
 
+const addDefaultExpenseCategories = (user) => {
+  const defaultExpenseCategories = ['Food', 'Clothing', 'Transportation', 'Housing', 'Utilities' ,'Medical', 'Debt Payments'];
+
+  const defaultExpenseCategoriesFormatted = defaultExpenseCategories.map(x => {
+    return {user_id: user, category: x}
+  })
+
+  return knex('expense_category')
+    .insert(defaultExpenseCategoriesFormatted)
+    .then(() => defaultExpenseCategoriesFormatted)
+    .catch(e => console.log('Error:', e.message));
+}
+
 const addNewExpenseCategory = (expenseCategory) => {
   const newExpenseCategory = {
     user_id: expenseCategory.user,
@@ -42,5 +55,6 @@ module.exports = {
   addNewUser,
   getUserByEmail,
   addNewExpenseCategory,
-  getExpenseCategories
+  getExpenseCategories,
+  addDefaultExpenseCategories
 }

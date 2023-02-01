@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 
-const { addNewUser, getUserByEmail } = require('../db/db');
+const { addNewUser, getUserByEmail, addDefaultExpenseCategories } = require('../db/db');
 const { checkInputField } = require('../helpers/checkInputField');
 
 router.get('/login', (req, res) => {
@@ -62,6 +62,7 @@ router.post('/signup', (req, res) => {
           addNewUser(newUser);
           getUserByEmail(newUser.email)
             .then((user) => {
+              addDefaultExpenseCategories(user.id)
               req.session.user = {id: user.id, firstName: user.first_name, lastName: user.last_name, email: user.email};
               res.send({id: user.id, firstName: user.first_name, lastName: user.last_name, email: user.email});
             })
