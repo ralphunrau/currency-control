@@ -1,8 +1,7 @@
 import '../styles/TransactionDisplay/index.scss';
 import SelectCategoryForm from './SelectCategoryForm';
-import ExpenseInput from './ExpenseInput';
 import React, {useState} from 'react';
-
+import ExpenseChart from './ExpenseChart';
 
 function TransactionDisplay(props) {
 
@@ -10,8 +9,8 @@ function TransactionDisplay(props) {
 
   return (
     <div className='transaction-display-main'>
-      <SelectCategoryForm category={category} setCategory={setCategory}/>
-      <ExpenseInput category={category}/>
+      <ExpenseChart />
+      {/* <SelectCategoryForm category={category} setCategory={setCategory}/> */}
     </div>
   );
 }

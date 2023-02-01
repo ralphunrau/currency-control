@@ -4,6 +4,9 @@
   "proxy": "http://localhost:8000",
   "private": true,
   "dependencies": {
+    "@coreui/coreui": "^4.2.6",
+    "@coreui/react": "^4.5.2",
+    "@coreui/react-chartjs": "^2.1.2",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@mui/material": "^5.10.16",

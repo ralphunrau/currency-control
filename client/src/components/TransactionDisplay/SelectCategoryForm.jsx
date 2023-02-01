@@ -5,7 +5,6 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import React, {useEffect, useState} from 'react';
 import TextField from '@mui/material/TextField';
-import Box from '@mui/material/Box';
 import axios from 'axios';
 
 function SelectCategoryForm(props) {
@@ -59,21 +58,10 @@ function SelectCategoryForm(props) {
           label="expense-category"
           onChange={handleChange}
         >
-          <MenuItem value={'Food'}>Food</MenuItem>
-          <MenuItem value={'Clothing'}>Clothing</MenuItem>
-          <MenuItem value={'Transportation'}>Transportation</MenuItem>
-          <MenuItem value={'Housing'}>Housing</MenuItem>
-          <MenuItem value={'Utilities'}>Utilities</MenuItem>
-          <MenuItem value={'Medical'}>Medical</MenuItem>
-          <MenuItem value={'Debt Payments'}>Debt Payments</MenuItem>
           {userCategories}
-          <Box
-            component="form"
-            autoComplete="false"
-            onSubmit={handleNewCategorySubmit}
-          >
+          <form onSubmit={handleNewCategorySubmit}>
             <TextField placeholder='Add a new category' variant="standard" />
-          </Box>
+          </form>
         </Select>
       </FormControl>
     </div>
