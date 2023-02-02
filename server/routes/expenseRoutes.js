@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { addNewExpenseCategory, getExpenseCategories } = require('../db/db');
+const { addNewExpenseCategory, getExpenseCategories, getUserCategoryExpenses } = require('../db/db');
 
 router.post('/category/new', (req, res) => {
 
