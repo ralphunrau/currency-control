@@ -7,6 +7,7 @@ import axios from 'axios';
 function TransactionDisplay(props) {
 
   const [userCategories, setUserCategories] = useState([]);
+  const [userExpenses, setUserExpenses] = useState([]);
 
   const loadExpenseCategories = () => {
     axios.get('/expense/category/user').then((res) => {
@@ -19,7 +20,10 @@ function TransactionDisplay(props) {
 
   const loadUserExpenses = () => {
     axios.get('/expense/user').then((res) => {
-      console.log(res.data)
+      const expenses = res.data.map((elem) => {
+        return {expense_category_id: elem.expense_category_id, amount: elem.amount, name: elem.name}
+      })
+      setUserExpenses(expenses)
     }).catch((err) => {
       console.log(err)
     })
@@ -32,7 +36,7 @@ function TransactionDisplay(props) {
 
   return (
     <div className='transaction-display-main'>
-      <ExpenseChart userCategories={userCategories}/>
+      <ExpenseChart userCategories={userCategories} userExpenses={userExpenses}/>
       {/* <SelectCategoryForm category={category} setCategory={setCategory}/> */}
     </div>
   );
