@@ -3,6 +3,8 @@ import {CChart} from '@coreui/react-chartjs';
 
 function ExpenseChart(props) {
 
+  const [chartData, setChartData] = useState([]);
+
   const calculateChartData = () => {
 
     let chartData = [];
@@ -20,7 +22,13 @@ function ExpenseChart(props) {
       }
     }
     chartData.push(categorySum);
+
+    setChartData(chartData);
   }
+
+  useEffect(() => {
+    calculateChartData();
+  }, [])
 
   return (
     <div className='expense-chart-main'>
@@ -30,8 +38,8 @@ function ExpenseChart(props) {
           labels: props.userCategories,
           datasets: [
             {
-              backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
-              data: [40, 20, 80, 10],
+              backgroundColor: ['#FF2D00', '#FFC300', '#FCFF00', '#7DFF00', '#00FFBA', '#007AFF', '#9300FF', '#FF00EF'],
+              data: chartData,
             },
           ],
         }}
