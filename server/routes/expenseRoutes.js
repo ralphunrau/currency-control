@@ -22,4 +22,11 @@ router.get('/category/user', (req, res) => {
     })
 })
 
+router.get('/user', (req, res) => {
+  getUserCategoryExpenses(req.session.user.id)
+    .then((expenses) => {
+      res.send(expenses)
+    })
+})
+
 module.exports = router;

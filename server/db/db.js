@@ -54,7 +54,6 @@ const getExpenseCategories = (user_id) => {
 const getUserCategoryExpenses = (user_id, expense_category_id) => {
   return knex('expense')
     .where({user_id: user_id})
-    .andWhere({expense_category_id: expense_category_id})
     .then((res) => res)
     .catch(e => console.log(e.message));
 }

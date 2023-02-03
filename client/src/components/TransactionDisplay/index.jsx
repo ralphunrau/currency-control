@@ -17,8 +17,17 @@ function TransactionDisplay(props) {
     })
   }
 
+  const loadUserExpenses = () => {
+    axios.get('/expense/user').then((res) => {
+      console.log(res.data)
+    }).catch((err) => {
+      console.log(err)
+    })
+  }
+
   useEffect(() => {
     loadExpenseCategories();
+    loadUserExpenses();
   }, [])
 
   return (
