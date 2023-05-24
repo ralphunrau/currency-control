@@ -5,9 +5,9 @@ function ExpenseChart(props) {
 
   const [chartData, setChartData] = useState([]);
 
-  const calculateChartData = () => {
+  const calculateChartData = (input) => {
 
-    let chartData = [];
+    let data = [];
     let y = 1;
     let categorySum = 0;
 
@@ -15,21 +15,24 @@ function ExpenseChart(props) {
       if (props.userExpenses[x].expense_category_id === y) {
         categorySum += props.userExpenses[x].amount;
       } else {
-        chartData.push(categorySum);
+        data.push(categorySum);
         categorySum = 0;
         categorySum += props.userExpenses[x].amount;
         y++;
       }
     }
-    chartData.push(categorySum);
+    data.push(categorySum);
 
-    setChartData(chartData);
+    // Compares fetched chart data with 
+    if (JSON.stringify(data) !== JSON.stringify(input)) {
+      setChartData(data);
+    }
   }
 
   useEffect(() => {
-    calculateChartData();
-  }, [])
-
+    calculateChartData(chartData);
+  })
+  
   return (
     <div className='expense-chart-main'>
       <CChart

@@ -23,8 +23,7 @@ function TransactionDisplay(props) {
       const expenses = res.data.map((elem) => {
         return {expense_category_id: elem.expense_category_id, amount: elem.amount, name: elem.name}
       })
-      setUserExpenses(expenses)
-      console.log(expenses)
+      setUserExpenses(expenses);
     }).catch((err) => {
       console.log(err)
     })
