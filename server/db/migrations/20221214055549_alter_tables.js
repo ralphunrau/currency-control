@@ -32,6 +32,7 @@ exports.up = function(knex) {
       t.increments('id').primary();
       t.integer('user_id').unsigned().references('id').inTable('user').onDelete('cascade');
       t.integer('expense_category_id').unsigned().references('id').inTable('expense_category').onDelete('cascade');
+      t.string('expense_category_name', 25);
       t.float('amount');
       t.string('name', 25);
       t.timestamps(true, true, true);
