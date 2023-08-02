@@ -40,7 +40,7 @@ function TransactionDisplay(props) {
     <div className='transaction-display-main'>
       <ExpenseChart userCategories={userCategories} userExpenses={userExpenses}/>
       <SelectCategoryForm category={category} setCategory={setCategory} userExpenses={userExpenses}/>
-      <CategoricalExpenseDisplay />
+      <CategoricalExpenseDisplay userCategories={userCategories} userExpenses={userExpenses}/>
     </div>
   );
 }

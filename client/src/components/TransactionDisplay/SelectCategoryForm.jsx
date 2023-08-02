@@ -10,10 +10,10 @@ import axios from 'axios';
 function SelectCategoryForm(props) {
 
   const [userCategories, setUserCategories] = useState([]);
-  const [category, setCategory] = useState('');
+  // const [category, setCategory] = useState('');
 
   const handleChange = (event) => {
-    setCategory(event.target.value);
+    props.setCategory(event.target.value);
   }
 
   const loadUserExpenseCategories = (param) => {
@@ -25,7 +25,7 @@ function SelectCategoryForm(props) {
       setUserCategories(categories);
 
       if (param) {
-        setCategory(param);
+        props.setCategory(param);
       }
     }).catch((err) => {
       console.log(err)
@@ -45,7 +45,7 @@ function SelectCategoryForm(props) {
   }
 
   console.log(props.userExpenses);
-  console.log(category);
+  console.log(props.category);
 
   const expenseView = props.userExpenses.map((x) => {
     return x.expense_category_id
@@ -63,7 +63,7 @@ function SelectCategoryForm(props) {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={category}
+          value={props.category}
           label="expense-category"
           onChange={handleChange}
         >
