@@ -23,7 +23,7 @@ function TransactionDisplay(props) {
   const loadUserExpenses = () => {
     axios.get('/expense/user').then((res) => {
       const expenses = res.data.map((elem) => {
-        return {expense_category_id: elem.expense_category_id, amount: elem.amount, name: elem.name}
+        return {expense_category_id: elem.expense_category_id, expense_category_name: elem.expense_category_name, amount: elem.amount, name: elem.name}
       })
       setUserExpenses(expenses);
     }).catch((err) => {
@@ -40,7 +40,7 @@ function TransactionDisplay(props) {
     <div className='transaction-display-main'>
       <ExpenseChart userCategories={userCategories} userExpenses={userExpenses}/>
       <SelectCategoryForm category={category} setCategory={setCategory} userExpenses={userExpenses}/>
-      <CategoricalExpenseDisplay userCategories={userCategories} userExpenses={userExpenses}/>
+      <CategoricalExpenseDisplay category={category} userCategories={userCategories} userExpenses={userExpenses}/>
     </div>
   );
 }
