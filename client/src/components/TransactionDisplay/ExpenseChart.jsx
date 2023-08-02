@@ -23,7 +23,7 @@ function ExpenseChart(props) {
     }
     data.push(categorySum);
 
-    // Compares fetched chart data with 
+    // Compares fetched chart data with new data
     if (JSON.stringify(data) !== JSON.stringify(input)) {
       setChartData(data);
     }
@@ -35,6 +35,7 @@ function ExpenseChart(props) {
   
   return (
     <div className='expense-chart-main'>
+      <h4>Expense Summary</h4>
       <CChart
         type="doughnut"
         data={{

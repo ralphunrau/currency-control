@@ -10,9 +10,10 @@ import axios from 'axios';
 function SelectCategoryForm(props) {
 
   const [userCategories, setUserCategories] = useState([]);
+  const [category, setCategory] = useState('');
 
   const handleChange = (event) => {
-    props.setCategory(event.target.value);
+    setCategory(event.target.value);
   }
 
   const loadUserExpenseCategories = (param) => {
@@ -21,10 +22,10 @@ function SelectCategoryForm(props) {
         return <MenuItem key={index} value={category.category}>{category.category}</MenuItem>
       })
 
-      setUserCategories(categories)
+      setUserCategories(categories);
 
       if (param) {
-        props.setCategory(param);
+        setCategory(param);
       }
     }).catch((err) => {
       console.log(err)
@@ -43,18 +44,26 @@ function SelectCategoryForm(props) {
     event.target.reset();
   }
 
+  console.log(props.userExpenses);
+  console.log(category);
+
+  const expenseView = props.userExpenses.map((x) => {
+    return x.expense_category_id
+  })
+
   useEffect(() => {
     loadUserExpenseCategories();
   }, [])
 
   return (
     <div>
+      <h4>List of categorical expenses</h4>
       <FormControl fullWidth>
       <InputLabel id="demo-simple-select-label">Select a category</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={props.category}
+          value={category}
           label="expense-category"
           onChange={handleChange}
         >
@@ -64,6 +73,9 @@ function SelectCategoryForm(props) {
           </form>
         </Select>
       </FormControl>
+      <div className='expense-display'>
+        {/* {expenseView} */}
+      </div>
     </div>
   );
 }
