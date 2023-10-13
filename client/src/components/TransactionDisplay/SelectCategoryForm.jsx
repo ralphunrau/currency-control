@@ -56,7 +56,7 @@ function SelectCategoryForm(props) {
   }, [])
 
   return (
-    <div>
+    <div className='category-select'>
       <h4>List of categorical expenses</h4>
       <FormControl fullWidth>
       <InputLabel id="demo-simple-select-label">Select a category</InputLabel>
@@ -73,9 +73,6 @@ function SelectCategoryForm(props) {
           </form>
         </Select>
       </FormControl>
-      <div className='expense-display'>
-        {/* {expenseView} */}
-      </div>
     </div>
   );
 }

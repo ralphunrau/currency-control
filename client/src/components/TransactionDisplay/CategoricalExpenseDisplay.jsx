@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import '../styles/TransactionDisplay/categoricalExpenseDisplay.scss';
 
 function CategoricalExpenseDisplay(props) {
   
@@ -8,7 +9,7 @@ function CategoricalExpenseDisplay(props) {
 
     // Retrieves current category expenses in a list
     const categoricalExpenses = props.userExpenses.filter((obj) => obj.expense_category_name === props.category).map((elem) => {
-      return elem.name + ', ' + elem.amount
+      return elem.name + ', $' + elem.amount
     });
 
     setUserCategoricalExpenses(categoricalExpenses)
@@ -19,8 +20,10 @@ function CategoricalExpenseDisplay(props) {
   }, [props.category])
 
   return (
-    <div>
-      {userCategoricalExpenses}
+    <div className='expense-display'>
+      {userCategoricalExpenses.map((expense, index) => (
+        <ul key={index}>{expense}</ul>
+      ))}
     </div>
   );
 }
